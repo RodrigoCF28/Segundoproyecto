@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function Mensaje()
-    {
+    public function Mensaje(){
         return "Hola desde el controlador de Post";
     }
 
@@ -16,8 +15,7 @@ class PostController extends Controller
         return view('about',$datos);
     }
 
-    public function Contacto()
-    {
+    public function Contacto(){
         return view('contacto',['mensaje'=>'Hola desde el controlador de Post']);
     }
 
