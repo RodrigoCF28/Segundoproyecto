@@ -90,3 +90,5 @@ Route::get('trescampos', function(){
     $post=Pagina::select('name','email','telefono')->get();
     return $post;
 });
+
+//hrhrhb
