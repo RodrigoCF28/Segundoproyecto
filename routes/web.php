@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Models\Pagina;
 
 
 
@@ -42,3 +43,50 @@ Route::get('/hello/{d}', function ($d=null) {
         }
         return "El parámetro recibido es: {$p}";
     });
+
+Route::get('/empresa', [HomeController::class, 'empresa'])->name('empresa');
+
+Route::get('nuevoregistro', function(){
+    $pagina=new Pagina;
+    $pagina->name="rodrigo";
+    $pagina->email="rodrigo1@example.com";
+    $pagina->email_verified_at=date('y-m-d h:i:s');
+    $pagina->password='12345678';
+    $pagina->avatar="avatar.jpg";
+    $pagina->telefono="1234567890";
+    $pagina->calle="Calle Falsa 123";
+    $pagina->save();
+    return $pagina;
+});
+
+Route::get('buscarpaginaid',function(){
+    $post=Pagina::find(1);
+    return $post;
+});
+
+Route::get('buscarxname',function(){
+    $post=Pagina::where('name','rodrigo')->first();
+    return $post;
+});
+
+Route::get('obtenertodos',function(){
+    $post=Pagina::all();
+    return $post;
+});
+
+Route::get('updatename',function(){
+    $post=Pagina::where('name','rodrigo')->first();
+    $post->email='rodrigo2@example.com';
+    $post->save();
+    return $post;
+});
+
+Route::get('filter',function(){
+    $post=Pagina::where('calle','like','%123%')->orderby("id","desc")->get();
+    return $post;
+});
+
+Route::get('trescampos', function(){
+    $post=Pagina::select('name','email','telefono')->get();
+    return $post;
+});
