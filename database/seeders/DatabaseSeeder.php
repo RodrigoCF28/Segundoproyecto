@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+//use APP\Models\Pagina;
+use App\Models\Pagina;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -29,6 +31,10 @@ class DatabaseSeeder extends Seeder
         $user->email="Camilo@example.com";
         $user->password=bcrypt("12345678");
         $user->save();
+
+
+
+        Pagina::factory(100)->create();
 
        // this->call([
         //    PaginaSeeder::class,

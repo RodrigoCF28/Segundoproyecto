@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Pagina extends Model
 {
+    use HasFactory;
 
+    //El proceso de transformación de datos se refiere a la conversión de datos de un formato a otro. En el contexto de Laravel, esto se puede lograr utilizando mutadores y accesores en los modelos Eloquent. Un mutador es un método que se ejecuta cuando se asigna un valor a un atributo del modelo, mientras que un accesor es un método que se ejecuta cuando se accede a un atributo del modelo. Ambos pueden ser utilizados para transformar los datos antes de guardarlos en la base de datos o antes de devolverlos al cliente o a la vista.
 //proceso de transformación de datos sin importar el formato de entrada, se puede usar para convertir datos a un formato específico antes de guardarlos en la base de datos o antes de devolverlos al cliente. Esto es útil para garantizar que los datos se almacenen y se devuelvan en un formato consistente, independientemente de cómo se reciban inicialmente.
     protected $table='paginas';
 
