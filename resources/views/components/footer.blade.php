@@ -16,9 +16,10 @@
         });
     });
  
-    function carga_modal(id, nombre){
+    function carga_modal(id, nombre,calle){
       $('#id').val(id);
       $('#name').val(nombre);
+      $('#calle').val(calle);
       $("#editForm").attr('action','/actualizar-dato/'+id);
       $('#myModal').modal('show');
     }

@@ -8,7 +8,7 @@ use App\Models\Pagina;
 
 
 
-Route::get('/hello',HomeController::class);
+
 Route::get('post/mensaje', [PostController::class,'Mensaje']);
 Route::get('post/about/{param?}/{name?}',[PostController::class,'About']);
 Route::get('post/contacto',[PostController::class, 'Contacto']);
@@ -48,8 +48,8 @@ Route::get('/empresa', [HomeController::class, 'empresa'])->name('empresa');
 
 Route::get('nuevoregistro', function(){
     $pagina=new Pagina;
-    $pagina->name="rodrigo";
-    $pagina->email="rodrigo1@example.com";
+    $pagina->name="Camilo";
+    $pagina->email="Rodrigoedepapu3000@example.com";
     $pagina->email_verified_at=date('y-m-d h:i:s');
     $pagina->password='12345678';
     $pagina->avatar="avatar.jpg";
@@ -92,3 +92,28 @@ Route::get('trescampos', function(){
 });
 
 //hrhrhb
+Route::get('filtroxnumerg',function(){
+    $post=Pagina::select("name","email")->orderBy("name")->take(4)->get();
+    return $post;
+});
+
+Route::get('eliminar_registro', function(){
+    $post=Pagina::find(3);
+    $post->delete();
+    return "Registro eliminado";
+});
+
+Route::get('obtenerfechaformato', function(){
+    $post=Pagina::select("name","email","created_at")->find(1);
+    return $post;
+});
+
+//Obtener el valor de is_active
+
+Route::get('Obtenerstatus',function(){
+    $post=Pagina::find(1);
+    dd($post->is_active);
+});
+
+Route::put('/actualizar-dato/{id}',[HomeController::class,'update'])->name('dato.update');
+

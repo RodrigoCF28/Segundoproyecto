@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Pagina;
 class HomeController extends Controller
 {
-    public function __invoke()
-    {
-        return view('hello');
-    }
 
     public function empresa(){
         $datos["nombre"]="Jose Rodrigo";
@@ -22,4 +18,16 @@ class HomeController extends Controller
         $datos["listadousuarios"]=$usuarios->ObtenerListado();
         return view('principal',$datos);
     }
+
+    public function update(Request $request){
+        $usuarios=new Pagina();
+        $respuesta=$usuarios->BuscarId($request->id);
+        if(!empty($respuesta)){
+            $respuesta->name=$request->name;
+            $respuesta->calle=$request->calle;
+            $respuesta->save();
+        }
+            return $respuesta;
+        }
 }
+
